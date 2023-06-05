@@ -1,0 +1,74 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 0;
+}
+
+form {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	max-width: 600px;
+	margin: auto;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+	display: block;
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url("https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0500/bullet_arrow_right.png") no-repeat;
+	background-position: right 10px center;
+	background-size: 16px 16px;
+	padding-right: 25px;
+}
+
+textarea {
+	height: 100px;
+	resize: vertical;
+}
+
+input[type="submit"] {
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #45a049;
+		}
+
+		@media screen and (max-width: 600px) {
+			form {
+				max-width: 100%;
+			}
+		}

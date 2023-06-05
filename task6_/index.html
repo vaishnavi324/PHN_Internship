@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Management</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/5.15.3/css/all.min.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
+<style>
+*{
+text-decoration: none;
+padding: 0;
+margin: 0;
+transition: all 0.2s linear;
+}
+html{
+font-size: 60%;
+scroll-behavior: smooth;
+overflow-x: hidden;
+scroll-padding-top: 6rem;
+}
+section{
+padding: 32px 9%;
+}
+.heading{
+text-align: center;
+padding: 40px 0;
+}
+.heading span{
+font-size: 40px;
+background: rgb(148, 240, 236);
+color: rgb(59, 205, 245);
+border-radius: 8px;
+padding: 3px 8px;
+}
+.space{
+background: none;
+}
+.btn{
+display: inline-block;
+margin-top: 10px;
+background-color: rgb(59, 205, 245);
+color:white;
+padding: 10px 40px;
+border: 2px solid rgb(59, 205, 245);
+cursor: pointer;
+font-size: 15px;
+}
+.btn:hover{
+background:gray;
+color: white;
+border: 2px solid gray;
+}
+header{
+position: fixed;
+background: rgb(0, 0, 0);
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 20px 9%;
+right: 0;
+left: 0;
+top:0;
+}
+.navbar a{
+color: white;
+font-size: 18px;
+margin: 0 13px;
+}
+.navbar a:hover{
+color:rgb(247, 77, 77);
+}
+.icons i{
+font-size: 20px;
+color: white;
+cursor: pointer;
+margin-right: 32px;
+}
+.icons i:hover{
+color: rgb(247, 77, 77);
+}
+.search{
+position: absolute;
+top: 100%;
+right: 0;
+left: 0;
+padding: 24px 32px;
+background:black;
+border-top: 2px solid gray;
+display: flex;
+align-items: center;
+z-index: 1001;
+clip-path: polygon(0 0,100% 0,100% 0,0 0);
+}
+.search #search{
+width: 100%;
+padding: 10px;
+font-size: 15px;
+border-radius: 8px;
+}
+.search label{
+color: white;
+cursor: pointer;
+font-size:15px;
+margin-left: 24px;
+}
+.navbar label:hover{
+color: rgb(59, 205, 245);
+}
+.home{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-flow: column;
+position: relative;
+z-index: 0;
+height: 800px;
+background-image: url('home.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+}
+.home .content{
+margin-left: 60%;
+}
+.home .content h3{
+font-size: 50px;
+color: rgb(247, 77, 77);
+}
+.home .content .heading{
+color: blue;
+}
+.home .content p{
+font-size: 20px;
+color: black;
+padding: 8px 0;
+}
+.home-btn{
+border: 2px solid white;
+border-radius: 4px;
+padding:12px 16px;
+background: black;
+color:white;
+font-size: 20px;
+}
+.home-btn:hover{
+background: rgb(247, 77, 77);
+border: 2px solid white;
+}
+.book .heading{
+font-size: 50px;
+color: blue;
+}
+.row{
+display: flex;
+gap: 10px;
+align-items: center;
+}
+.book .row .image img{
+width: 314%;
+height: 347px;
+}
+.row p{
+font-size: 20px;
+margin-left: 38%;
+}
+.services .heading{
+font-size: 50px;
+color: blue;
+}
+.services .heading{
+font-size: 50px;
+color: blue;
+}
+.b-container{
+display: flex;
+flex-wrap: wrap;
+gap: 32px;
+}
+.card{
+flex: 1 1 360px;
+border-radius: 6px;
+overflow: hidden;
+box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+}
+.card img{
+height: 300px;
+width: 100%;
+object-fit: cover;
+}
+.card .content{
+padding: 32px;
+}
+.card .content h3{
+text-align: justify;
+font-size: 16px;
+color: black;
+}
+.card .content h3 i{
+color: rgb(247, 77, 77);
+padding-right: 6px;
+}
+.card .content p{
+font-size: 18px;
+color: black;
+padding: 16px 0;
+}
+.stars i{
+font-size: 18px;
+color: rgb(246, 218, 35);
+}
+.price{
+font-size: 18px;
+color: black;
+padding-top: 16px;
+padding-bottom: 20px;
+}
+.price span{
+color: black;
+font-size:14px ;
+text-decoration: line-through;
+}
+.no .b-container .card{
+text-align: center;
+}
+.no .b-container .card i{
+padding: 16px;
+font-size: 50px;
+color: rgb(247, 77, 77);
+}
+.no .b-container .card h3{
+font-size: 50px;
+color: black;
+}
+.no .b-container .card p{
+font-size: 18px;
+color: gray;
+padding: 16px 0;
+}
+.no .b-container .card:hover{
+box-shadow:0 16px 32px rgba(0,0,0,0.1);
+}
+.staff .heading{
+font-size: 50px;
+color: blue;
+}
+.staff .b-container .card{
+overflow: hidden;
+box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+border: 2px solid white;
+border-radius: 8px;
+flex: 1 1 360px;
+height: 300px;
+position: relative;
+}
+.staff .b-container .card img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+}
+.staff .b-container .card:hover .content{
+position: absolute;
+top:0;
+left: 0;
+height: 100%;
+width: 100%;
+text-align: center;
+background:rgba(0,0,0,0.7);
+}
+.staff .b-container .card .content h3{
+font-size: 25px;
+color: rgb(247, 77, 77);
+padding-right: 50px;
+padding-left: 60px;
+}
+.staff .b-container .card .content p{
+font-size: 15px;
+color: white;
+padding: 8px;
+padding-bottom: 20px;
+padding-right: 80px;
+}
+.staff .b-container .card .content .icons i{
+font-size: 15px;
+color: white;
+}
+.staff .b-container .book-btn{
+margin-right: 60px;
+}
+.staff .b-container .book-btn:hover{
+border-color: rgb(59, 205, 245);
+background: none;
+}
+.review .heading{
+font-size: 50px;
+color: blue;
+}
+.review .card{
+padding: 20px;
+text-align: center;
+box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+border-radius: 8px;
+}
+.review .card img{
+height: 156px;
+width:156px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 16px;
+}
+.review .card h3{
+color: black;
+font-size: 25px;
+}
+.review .card p{
+color: gray;
+font-size: 15px;
+padding: 16px 0;
+}
+.review .card .stars i{
+color: orange;
+font-size: 20px;
+}
+.contact .heading{
+font-size: 50px;
+color: blue;
+}
+.contact .row{
+display: flex;
+flex-wrap: wrap;
+gap: 18px;
+}
+.contact .row .image{
+flex: 1 1 420px;
+}
+.contact .row .image img{
+width: 100%;
+}
+.contact .row form{
+flex: 1 1 600px;
+padding: 25px;
+box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+}
+.contact .row form .inputb{
+display: flex;
+justify-content: space-between;
+gap: 20px;
+}
+.contact .btn{
+background-color: rgb(247, 77, 77);
+color: white;
+border: 2px solid rgb(247, 77, 77);
+}
+.contact .btn:hover{
+background-color: blue;
+color: white;
+border: 2px solid blue;
+}
+.contact .row form .inputb input,.contact .row form textarea{
+width: 49%;
+margin: 16px 0;
+padding:12px;
+font-size: 15px;
+color: gray;
+background:rgb(244, 242, 242);
+text-transform: none;
+border: none;
+}
+.contact .row form textarea{
+height: 180px;
+resize: none;
+width: 100%;
+}
+.footer{
+background-color: black;
+}
+.footer .b-container{
+display: flex;
+flex-wrap: wrap;
+gap: 18px;
+}
+.footer .b-container .card{
+padding: 16px 0;
+flex: 1 1 300px;
+}
+.footer .b-container .card h3{
+font-size: 24px;
+padding: 8px;
+color: white;
+}
+.footer .b-container .card p{
+font-size: 16px;
+padding: 8px;
+color: white;
+}
+.footer .b-container .card a{
+display: block;
+font-size: 16px;
+padding: 8px 0;
+color: white;
+}
+.footer .b-container .card a:hover{
+color: rgb(247, 77, 77);
+text-decoration: underline;
+}
+.footer .cr{
+text-align: center;
+padding: 32px 16px;
+margin-top: 16px;
+font-size: 18px;
+font-weight: normal;
+color: white;
+border-top: 1px solid white;
+}
+header img{
+height: 60px;
+}
+@media (max-width:1200px){
+html{
+font-size: 55%;
+}
+}
+@media (max-width:1042px){
+header{
+padding: 32px;
+}
+section{
+padding: 32px;
+}
+}
+@media (max-width:1042px){
+#menubar{
+display: initial;
+}
+.navbar{
+position: absolute;
+top: 100%;
+right: 0;
+left: 0;
+background:black;
+border-top: 2px solid gray;
+padding: 16px 32px;
+clip-path: polygon(0 0,100% 0,100% 0,0 0);
+}
+.navbar.active{
+clip-path:polygon(0 0,100% 0,100% 100%,0 100%) ;
+}
+.navbar a{
+display: block;
+border-radius: 3px;
+padding: 16px;
+margin: 16px 0;
+background:rgb(60, 59, 59);
+}
+}
+@media (max-width:450px){
+html{
+font-size:50% ;
+}
+.heading span{
+font-size: 40px;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div id="menubar" class="fas fa-bars"></div>
+<img src="logo4.jpg" alt="">
+<nav class="navbar">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#staff">Staff</a>
+<a href="#review">Review</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="icons">
+<i class="fas fa-search" id="search"></i>
+</div>
+</header>
+<section class="home" id="home">
+<div class="content">
+<h3>The Best Doctors Give <a class="heading"> The Least Medicines</a></h3>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione tempora voluptates iste
+odio recusandae doloremque eum eaque amet sequi, provident debitis, eius iusto?
+Excepturi.</p><br><br><br>
+<a href="#" class="home-btn">Make An Appointment</a>
+</div>
+</section>
+<section class="book" id="book">
+<h1 class="heading">About Us</h1>
+<div class="row">
+<div class="image">
+<img src="about3.jpg" alt="">
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, soluta labore nulla
+repellat expedita est maxime dolorum laudantium, eius non consequuntur in unde optio dolores,
+possimus quidem voluptatibus numquam nisi.</p>
+</div>
+</section>
+<section class="no" id="no">
+<div class="b-container">
+<div class="card">
+<i class="fas fa-user-md"></i>
+<h3>500+</h3>
+<p>Doctors Available</p>
+</div>
+<div class="card">
+<i class="fas fa-heartbeat"></i>
+<h3>1500+</h3>
+<p>Happy Patients</p>
+</div>
+<div class="card">
+<i class="fas fa-hospital"></i>
+<h3>200+</h3>
+<p>Hospital Branches Available</p>
+</div>
+</div>
+</section>
+<section class="services" id="services">
+<h1 class="heading">Services</h1>
+<div class="b-container">
+<div class="card">
+<img src="eye.png" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>S1st Floor, City Space, Nagar Road, Viman
+Nagar, pune - 411014 (Above Mahendra Showroom, Near Phoenix Mall)</h3>
+<p>Ophthalmologists</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+<div class="card">
+<img src="physio.png" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>Kolte Patil City Space 1st Floor, Nagar Road,
+Viman Nagar, Pune - 411014 (Near Four Points By Sheraton)</h3>
+<p>Doctor of Physical Therapy</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+<div class="card">
+<img src="teeth.jpg" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>Third Floor, Punde Complex, Shikrapur,
+Pune - 412208 (Pabal Chowk)</h3>
+<p>Dental surgeon</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+<div class="card">
+<img src="heart.jpg" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>Shop No. 9, Shwetambari, Navshya Maruti
+Lane, Pune - 411030 (Near Pu La Deshpande Garden, Sinhagad Road)</h3>
+<p>Cardiologist</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+<div class="card">
+<img src="child.jpg" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>1st Floor Anamika, Above Hotel Pushpak
+Paud Road, Kothrud, Pune - 411038 (Near Left Bhusari Colony,Opposite.pantaloons)</h3>
+<p>Paediatrician</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+<div class="card">
+<img src="skin.jpg" alt="">
+<div class="content">
+<h3><i class="fas fa-map-marker-alt"></i>1st Floor, Shushila Apartment, Ghole Road,
+Sant Tukaram Paduko Chowk, Shivaji Nagar, pune - 411005 (Next to Ferguson College, Opposite
+Hotel Shabree)</h3>
+<p>Dermatologist</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+<div class="price">$100.00 <span>$250.00</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="staff" id="staff">
+<h1 class="heading">Staff</h1>
+<div class="b-container">
+<div class="card">
+<img src="d5.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake</h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+<div class="icons">
+<i class="fa fa-instagram"></i>
+<i class="fa fa-facebook-f"></i>
+</div>
+</div>
+</div>
+<div class="card">
+<img src="7.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="8.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="9.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="d1.avif" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="d2.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="d3.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="d4.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+<div class="card">
+<img src="d6.jpg" alt="">
+<div class="content">
+<h3>Dr. Parag Dahake </h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, sed!</p>
+</div>
+</div>
+</div>
+</section>
+<section class="review" id="review">
+<h1 class="heading">Review</h1>
+<div class="swiper-container review-slider">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+<div class="card">
+<img src="r1.jpg" alt="">
+<h3>Miss Mary</h3>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, minima maiores!
+Incidunt cum recusandae sapiente totam cumque? Asperiores, non necessitatibus porro perferendis a
+temporibus!lorem10 Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, voluptates!
+</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="card">
+<img src="r2.webp" alt="">
+<h3>MR. David</h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, placeat?
+Voluptatum ipsa dignissimos magnam quidem nihil illo officiis temporibus consectetur! Lorem ipsum
+dolor, sit amet consectetur adipisicing elit. Facilis, quas.
+</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="card">
+<img src="r3.jpg" alt="">
+<h3>Mr. Fernandis</h3>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, placeat?
+Voluptatum ipsa dignissimos magnam quidem nihil illo officiis temporibus consectetur! Lorem ipsum
+dolor, sit amet consectetur adipisicing elit. Facilis, quas.
+</p>
+<div class="stars">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="contact" id="contact">
+<h1 class="heading">Contact</h1>
+<div class="row">
+<div class="image">
+<img src="c1.jpg" alt="">
+</div>
+<form action="">
+<div class="inputb">
+<input type="text" placeholder="Name">
+<input type="text" placeholder="Place">
+</div>
+<div class="inputb">
+<input type="number" placeholder="Phone">
+<input type="text" placeholder="Subject">
+</div>
+<textarea placeholder="Problem" name="" id="" cols="30" rows="10"></textarea>
+<input type="submit" class="btn" value="Send">
+</form>
+</div>
+</section>
+<section class="footer">
+<div class="b-container">
+<div class="card">
+<h3>Reach Us</h3>
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet quibusdam facilis earum
+adipisci deleniti aut et incidunt totam maiores delectus! Lorem ipsum dolor sit, amet consectetur
+adipisicing elit. In, explicabo!</p>
+</div>
+<div class="card">
+<h3>Hospital Locations</h3>
+<a href="#">Pune</a>
+<a href="#">Mumbai</a>
+<a href="#">Nagpur</a>
+<a href="#">Akola</a>
+<a href="#">Amravati</a>
+</div>
+<div class="card">
+<h3>Follow Us</h3>
+<a href="#">Facebook</a>
+<a href="#">Twitter</a>
+<a href="#">Instagram</a>
+<a href="#">Linkedin</a>
+</div>
+<div class="card"></div>
+</div>
+<h1 class="cr">&copy; medicure.com | All rights reserved</h1>
+</section>
+</body>
+</html>
